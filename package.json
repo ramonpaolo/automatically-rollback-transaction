@@ -1,0 +1,33 @@
+{
+  "name": "automatically-rollback-transaction-closed-connection",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/index.ts",
+    "test": "NODE_ENV=test jest --verbose --coverage --forceExit",
+    "start": "node dist/index.js",
+    "build": "tsc",
+    "linter": "yarn eslint ./src/**"
+  },
+  "dependencies": {
+    "eslint": "^8.53.0",
+    "express": "^4.18.2",
+    "pg": "^8.11.3",
+    "sequelize": "^6.35.0",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.23.3",
+    "@babel/preset-typescript": "^7.23.3",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.9.0",
+    "@types/pg": "^8.10.9",
+    "@types/sequelize": "^4.28.18",
+    "@typescript-eslint/eslint-plugin": "^6.11.0",
+    "@typescript-eslint/parser": "^6.11.0",
+    "nodemon": "^3.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}

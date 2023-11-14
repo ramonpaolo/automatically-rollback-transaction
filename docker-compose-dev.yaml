@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+    server:
+        build: 
+            dockerfile: ./docker/node-dev.dockerfile
+            context: .
+        container_name: server_transaction
+        image: r4deu51/server_transaction
+        ports:
+            - "3000:3000"
+        volumes:
+            - ./:/app:rw
+            - /app/node_modules
+        networks:
+            - network
+        environment:
+            - NODE_ENV=development
+            - APP_ENV=development
+        env_file:
+            - ./.env
+        depends_on:
+            - postgres
+
+    postgres:
+        image: postgres:15.4-alpine
+        container_name: postgres_transaction
+        environment:
+            - POSTGRES_USER=$POSTGRES_USERNAME
+            - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+        networks:
+            - network
+        ports:
+            - "5432:5432"
+        restart: always
+
+networks:
+    network:
+        driver: bridge
